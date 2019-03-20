@@ -390,40 +390,13 @@ angular.module('uiCropper').factory('cropHost', ['$document', '$q', 'cropAreaCir
                     areaWidth = theArea.getSize().w * (image.width / ctx.canvas.width),
                     areaHeight = theArea.getSize().h * (image.height / ctx.canvas.height);
 
-                if (forceAspectRatio) {
-                    temp_ctx.drawImage(image, x, y,
-                        areaWidth,
-                        areaHeight,
-                        0,
-                        0,
-                        ris.w,
-                        ris.h);
-                } else {
-                    var aspectRatio = areaWidth / areaHeight;
-                    var resultHeight, resultWidth;
-
-                    if (aspectRatio > 1) {
-                        resultWidth = ris.w;
-                        resultHeight = resultWidth / aspectRatio;
-                    } else {
-                        resultHeight = ris.h;
-                        resultWidth = resultHeight * aspectRatio;
-                    }
-
-                    temp_canvas.width = resultWidth;
-                    temp_canvas.height = resultHeight;
-
-                    temp_ctx.drawImage(image,
-                        x,
-                        y,
-                        areaWidth,
-                        areaHeight,
-                        0,
-                        0,
-                        Math.round(resultWidth),
-                        Math.round(resultHeight));
-                }
-
+                temp_ctx.drawImage(image, x, y,
+                    areaWidth,
+                    areaHeight,
+                    0,
+                    0,
+                    ris.w,
+                    ris.h);
             }
             return temp_canvas;
 

@@ -2,10 +2,10 @@
  * uiCropper v1.0.8
  * https://crackerakiua.github.io/ui-cropper/
  *
- * Copyright (c) 2018 Alex Kaul
+ * Copyright (c) 2019 Alex Kaul
  * License: MIT
  *
- * Generated at Tuesday, December 11th, 2018, 7:28:54 PM
+ * Generated at Wednesday, March 20th, 2019, 10:22:07 AM
  */
 (function() {
 angular.module('uiCropper', []);
@@ -2636,40 +2636,13 @@ angular.module('uiCropper').factory('cropHost', ['$document', '$q', 'cropAreaCir
                     areaWidth = theArea.getSize().w * (image.width / ctx.canvas.width),
                     areaHeight = theArea.getSize().h * (image.height / ctx.canvas.height);
 
-                if (forceAspectRatio) {
-                    temp_ctx.drawImage(image, x, y,
-                        areaWidth,
-                        areaHeight,
-                        0,
-                        0,
-                        ris.w,
-                        ris.h);
-                } else {
-                    var aspectRatio = areaWidth / areaHeight;
-                    var resultHeight, resultWidth;
-
-                    if (aspectRatio > 1) {
-                        resultWidth = ris.w;
-                        resultHeight = resultWidth / aspectRatio;
-                    } else {
-                        resultHeight = ris.h;
-                        resultWidth = resultHeight * aspectRatio;
-                    }
-
-                    temp_canvas.width = resultWidth;
-                    temp_canvas.height = resultHeight;
-
-                    temp_ctx.drawImage(image,
-                        x,
-                        y,
-                        areaWidth,
-                        areaHeight,
-                        0,
-                        0,
-                        Math.round(resultWidth),
-                        Math.round(resultHeight));
-                }
-
+                temp_ctx.drawImage(image, x, y,
+                    areaWidth,
+                    areaHeight,
+                    0,
+                    0,
+                    ris.w,
+                    ris.h);
             }
             return temp_canvas;
 
